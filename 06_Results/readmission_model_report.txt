@@ -1,0 +1,47 @@
+
+PROJECT 1: PATIENT READMISSION PREDICTION - FINAL REPORT
+=========================================================
+
+DATASET INFORMATION
+- Total Samples: 26851
+- Training Samples: 21494
+- Test Samples: 5371
+- Features: 9
+- Target: readmitted_30days (Binary Classification)
+
+MODEL SELECTION
+- Best Model: Logistic Regression
+- Reason: Highest accuracy, precision, recall, and AUC with good generalization
+
+MODEL PERFORMANCE ON TEST SET
+- Accuracy: 0.7907
+- Precision: 0.7874
+- Recall: 0.7962
+- F1-Score: 0.7918
+- AUC-ROC: 0.8777
+
+CONFUSION MATRIX
+- True Negatives: 2110
+- False Positives: 577
+- False Negatives: 547
+- True Positives: 2137
+
+TOP 3 IMPORTANT FEATURES
+1. Previous Admissions (Coefficient: 1.52)
+2. Length of Stay Days (Coefficient: 0.75)
+3. Patient Age (Coefficient: 0.73)
+
+MODEL INTERPRETATION
+- Patients with previous hospital admissions are at highest risk
+- Longer hospital stays indicate higher readmission risk
+- Older patients tend to have higher readmission risk
+
+RECOMMENDATIONS FOR DEPLOYMENT
+- Model is production-ready with 78% accuracy
+- Focus intervention on high-risk patients (>60% risk)
+- Monitor false negatives (547 cases) for improved recall
+
+SAVED ARTIFACTS
+- Model: lr_readmission_model.pkl
+- Scaler: readmission_scaler.pkl
+- Features: feature_names.pkl

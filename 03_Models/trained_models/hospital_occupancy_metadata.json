@@ -1,0 +1,124 @@
+{
+    "project": "Hospital Resource Optimization",
+    "notebook": "03_Hospital_Resources.ipynb",
+    "created_date": "2026-05-28 17:00:48",
+    "dataset": {
+        "filename": "hospital_resources.csv",
+        "rows": 21912,
+        "columns": 10,
+        "hospitals": 4,
+        "departments": [
+            "ER",
+            "ICU",
+            "General Ward"
+        ],
+        "date_range": "2019-01-01 to 2023-12-31",
+        "features_after_engineering": 68
+    },
+    "best_model": {
+        "name": "Random Forest",
+        "file": "rf_hospital_occupancy.pkl",
+        "test_r2": 0.9993,
+        "test_mae": 0.17,
+        "test_rmse": 0.4175,
+        "test_mape": 0.0027,
+        "cv_mean": 0.9993,
+        "cv_std": 0.0002
+    },
+    "all_models": {
+        "Random Forest": {
+            "test_r2": 0.9993,
+            "test_mae": 0.17,
+            "file": "rf_hospital_occupancy.pkl"
+        },
+        "LightGBM": {
+            "test_r2": 0.999,
+            "test_mae": 0.3324,
+            "file": "lgb_hospital_occupancy.pkl"
+        },
+        "XGBoost": {
+            "test_r2": 0.9984,
+            "test_mae": 20.725,
+            "file": "xgb_hospital_occupancy.pkl"
+        },
+        "Linear Regression": {
+            "test_r2": 0.9845,
+            "test_mae": 1.4697,
+            "file": "lr_hospital_occupancy.pkl"
+        }
+    },
+    "department_models": {
+        "ER": {
+            "test_r2": 0.9988,
+            "test_mae": 0.4379,
+            "file": "rf_er_occupancy.pkl"
+        },
+        "ICU": {
+            "test_r2": 0.9968,
+            "test_mae": 0.5436,
+            "file": "rf_icu_occupancy.pkl"
+        },
+        "General Ward": {
+            "test_r2": 0.9997,
+            "test_mae": 0.2368,
+            "file": "rf_general_ward_occupancy.pkl"
+        }
+    },
+    "department_stats": {
+        "ICU": {
+            "avg_occupancy": 81.01,
+            "avg_los": 4.5,
+            "cost_per_bed": 586.17
+        },
+        "ER": {
+            "avg_occupancy": 72.81,
+            "avg_los": 2.54,
+            "cost_per_bed": 452.57
+        },
+        "General Ward": {
+            "avg_occupancy": 68.22,
+            "avg_los": 3.51,
+            "cost_per_bed": 179.99
+        }
+    },
+    "staffing_ratios": {
+        "ICU": {
+            "nurses": 2.0,
+            "doctors": 0.5,
+            "support": 1.0
+        },
+        "ER": {
+            "nurses": 1.5,
+            "doctors": 0.4,
+            "support": 0.8
+        },
+        "General Ward": {
+            "nurses": 0.5,
+            "doctors": 0.2,
+            "support": 0.3
+        }
+    },
+    "salary_per_shift": {
+        "nurses": 150,
+        "doctors": 400,
+        "support": 80
+    },
+    "alert_thresholds": {
+        "CRITICAL": 90,
+        "HIGH": 75,
+        "MODERATE": 50,
+        "LOW": 0
+    },
+    "top_features": [
+        "occupancy_rate_lag_7d",
+        "occupancy_rate_pct_change_7d",
+        "occupancy_rate_rolling_14d",
+        "occupancy_rate_rolling_7d",
+        "occupancy_rate_lag_1d"
+    ],
+    "flask_endpoints": {
+        "predict_occupancy": "POST /api/resources/forecast-beds",
+        "forecast_14_days": "GET  /api/resources/overview",
+        "staffing_recommend": "GET  /api/resources/staffing"
+    }
+}
