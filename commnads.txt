@@ -1,4 +1,0 @@
-cd C:\HealthcareML_Platform\04_Backend
-python app.py
-cd C:\HealthcareML_Platform\healthcare-frontend
-npm start
